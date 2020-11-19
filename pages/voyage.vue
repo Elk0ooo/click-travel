@@ -18,10 +18,18 @@
                     {{item.number}}
                     {{item.time}}
                     {{item.to}}
+                    <nuxt-link :to="{name: 'ticket', params: {class: item.class,flight: item.flight,
+                                    from: item.from,gate: item.gate,number: item.number,
+                                    passenger: item.passenger,seat: item.seat,number: item.number,time: item.time,to: item.to}}">
+                           <a class="giant-button"> 
+                                Générer ticket {{passenger}}
+                            </a>
+                    </nuxt-link>
                 </li>           
             </ul>
         </div>
       </div>
+     
     </div>
   </div>
 </template>

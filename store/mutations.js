@@ -18,7 +18,28 @@ export default {
       })
   
       state.destinationList = indexDestinationList
-    }
-  
+      console.log(state.destinationList)
+    },
+    setTicket (state, payload) {  
+        const indexTicketList = []
+        payload.data.forEach((ticket) => {
+          const cur = {}
+          cur.class = ticket.class
+          cur.flight = ticket.flight
+          cur.from = ticket.from
+          cur.gate = ticket.gate
+          cur.number = ticket.number
+          cur.passenger = ticket.passenger
+          cur.seat = ticket.seat
+          cur.number = ticket.number
+          cur.time = ticket.time
+          cur.to = ticket.to
+          indexTicketList.push(cur)
+          
+        })
+   
+        state.ticketsList = indexTicketList
+        console.log(state.ticketsList)
+      },
   }
   

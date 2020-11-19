@@ -5,13 +5,21 @@
     </div>
     <div class="content">
       <div>
-        <h1 class="title">Choose your dream destination...</h1>
         <div class="links">
-          <nuxt-link v-for="item in computedItems" :key="item.code" :to="{name: 'voyage', params: {code: item.code}}">
-          <a class="giant-button"> 
-            {{item.name}}
-          </a>
-          </nuxt-link>
+          <ul> 
+            <li v-for="item in computedItems" :key="item.code" class="title">                
+                    {{item.class}}
+                    {{item.flight}}
+                    {{item.from}}
+                    {{item.gate}}
+                    {{item.number}}
+                    {{item.passenger}}
+                    {{item.seat}}
+                    {{item.number}}
+                    {{item.time}}
+                    {{item.to}}
+                </li>           
+            </ul>
         </div>
       </div>
     </div>
@@ -20,7 +28,7 @@
 
 <script>
 import Vue from 'vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -29,10 +37,10 @@ export default {
     }
   },
   computed: mapGetters({
-    computedItems: 'getDestinationList'
-  }),
+    computedItems: 'getDestinationTicket' 
+     }),
   created () {
-    this.$store.dispatch('getDestination')
+    this.$store.dispatch('getTicket',this.$route.params.code)
   }
 
 }

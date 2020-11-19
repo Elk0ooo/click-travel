@@ -7,10 +7,9 @@
       <div>
         <h1 class="title">Choose your dream destination...</h1>
         <div class="links">
-          <a href="#" class="giant-button"> San Francisco, USA </a>
-          <a href="#" class="giant-button"> Québec, Canada </a>
-          <a href="#" class="giant-button"> Bora Bora, Polynésie </a>
-          <a href="#" class="giant-button"> Torres del Paine, Chile </a>
+          <a v-for="item in computedItems" :key="item.code" href="#" class="giant-button"> 
+            {{item.name}}
+            </a>
         </div>
       </div>
     </div>
@@ -18,7 +17,23 @@
 </template>
 
 <script>
-export default {}
+import Vue from 'vue'
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+  data () {
+    return {
+      // items: computedItems
+    }
+  },
+  computed: mapGetters({
+    computedItems: 'getDestinationList'
+  }),
+  created () {
+    this.$store.dispatch('getDestination')
+  }
+
+}
 </script>
 
 <style lang="scss">
